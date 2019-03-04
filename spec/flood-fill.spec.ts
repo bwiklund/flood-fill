@@ -40,6 +40,28 @@ describe("flood fill", () => {
     expect(wereAllFilled).toEqual(true);
   });
 
+  it("only replaces target color", () => {
+    var buffer = new TestCanvas(5, 5);
+
+    buffer.setColor(0, 0, 1);
+    buffer.setColor(1, 0, 1);
+    buffer.setColor(2, 0, 1);
+
+    floodFill(
+      0, 0,
+      2,
+      buffer.getColor.bind(buffer),
+      buffer.setColor.bind(buffer),
+      buffer.isInBounds.bind(buffer),
+      buffer.equals.bind(buffer)
+    );
+
+    expect(buffer.getColor(0,0)).toEqual(2);
+    expect(buffer.getColor(1,0)).toEqual(2);
+    expect(buffer.getColor(2,0)).toEqual(2);
+    expect(buffer.getColor(1,1)).toEqual(0);
+  });
+
   it("won't throw if it starts out of bounds", () => {
     var buffer = new TestCanvas(5, 5);
 
