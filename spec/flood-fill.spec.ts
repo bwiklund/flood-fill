@@ -39,4 +39,30 @@ describe("flood fill", () => {
     }
     expect(wereAllFilled).toEqual(true);
   });
+
+  it("won't throw if it starts out of bounds", () => {
+    var buffer = new TestCanvas(5, 5);
+
+    floodFill(
+      -1, -1,
+      1,
+      buffer.getColor.bind(buffer),
+      buffer.setColor.bind(buffer),
+      buffer.isInBounds.bind(buffer),
+      buffer.equals.bind(buffer)
+    );
+  });
+
+  it("won't lock up if the replacement and target color are already equal", () => {
+    var buffer = new TestCanvas(5, 5);
+
+    floodFill(
+      0, 0,
+      0,
+      buffer.getColor.bind(buffer),
+      buffer.setColor.bind(buffer),
+      buffer.isInBounds.bind(buffer),
+      buffer.equals.bind(buffer)
+    );
+  });
 });
