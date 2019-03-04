@@ -1,8 +1,8 @@
 {
   "name": "flood-fill",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/flood-fill.js",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
