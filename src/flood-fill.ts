@@ -16,6 +16,10 @@ export function floodFill<T>(
   isInBounds: (x: number, y: number) => boolean,
   equals: (a: T, b: T) => boolean
 ) {
+  // cast x and y to ints
+  x = ~~x;
+  y = ~~y;
+
   if (!isInBounds(x, y)) { return; }
 
   var pos = new Vec(x, y);
