@@ -10,9 +10,9 @@ class Vec {
 export function floodFill<T>(
   x: number,
   y: number,
-  replacementColor: T,
-  getColor: (x: number, y: number) => T,
-  setColor: (x: number, y: number, color: T) => void,
+  replacementValue: T,
+  getValue: (x: number, y: number) => T,
+  setValue: (x: number, y: number, color: T) => void,
   isInBounds: (x: number, y: number) => boolean,
   equals: (a: T, b: T) => boolean
 ) {
@@ -20,11 +20,11 @@ export function floodFill<T>(
 
   var pos = new Vec(x, y);
 
-  var targetColor = getColor(x, y);
+  var targetValue = getValue(x, y);
 
-  if (equals(targetColor, replacementColor)) { return; }
+  if (equals(targetValue, replacementValue)) { return; }
 
-  setColor(x, y, replacementColor);
+  setValue(x, y, replacementValue);
 
   var queue: Vec[] = [];
   queue.push(pos);
@@ -42,9 +42,9 @@ export function floodFill<T>(
     for (var i = 0; i < directions.length; i++) {
       var newPos = directions[i];
       if (isInBounds(newPos.x, newPos.y)) {
-        var newNodeColor = getColor(newPos.x, newPos.y);
-        if (equals(newNodeColor, targetColor)) {
-          setColor(newPos.x, newPos.y, replacementColor);
+        var newNodeValue = getValue(newPos.x, newPos.y);
+        if (equals(newNodeValue, targetValue)) {
+          setValue(newPos.x, newPos.y, replacementValue);
           queue.push(newPos);
         }
       }
