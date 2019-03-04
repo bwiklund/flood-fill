@@ -16,17 +16,15 @@ export function floodFill<T>(
   isInBounds: (x: number, y: number) => boolean,
   equals: (a: T, b: T) => boolean
 ) {
+  if (!isInBounds(x, y)) { return; }
 
   var pos = new Vec(x, y);
 
-  var targetColor = getColor(x, y);;
-
-  if (!targetColor) { return; }
+  var targetColor = getColor(x, y);
 
   if (equals(targetColor, replacementColor)) { return; }
 
   setColor(x, y, replacementColor);
-
 
   var queue: Vec[] = [];
   queue.push(pos);
@@ -45,7 +43,6 @@ export function floodFill<T>(
       var newPos = directions[i];
       if (isInBounds(newPos.x, newPos.y)) {
         var newNodeColor = getColor(newPos.x, newPos.y);
-        if (!newNodeColor) { continue; }
         if (equals(newNodeColor, targetColor)) {
           setColor(newPos.x, newPos.y, replacementColor);
           queue.push(newPos);
