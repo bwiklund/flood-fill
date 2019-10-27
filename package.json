@@ -1,6 +1,6 @@
 {
   "name": "ts-flood-fill",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/flood-fill.js",
   "scripts": {
@@ -34,9 +34,9 @@
   },
   "homepage": "https://github.com/bwiklund/flood-fill#readme",
   "devDependencies": {
-    "@types/jest": "^24.0.9",
-    "jest": "^24.1.0",
-    "ts-jest": "^24.0.0",
-    "typescript": "^3.3.3333"
+    "@types/jest": "^24.0.20",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
   }
 }
