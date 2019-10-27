@@ -1,6 +1,6 @@
 {
   "name": "ts-flood-fill",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/flood-fill.js",
   "scripts": {
